@@ -1,0 +1,41 @@
+/* OrderHistory.css */
+
+.order {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+  padding: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.order:hover {
+  transform: scale(1.02);
+}
+
+.order h3, .order p, .order h4, .order ul {
+  margin: 8px 0;
+}
+
+.order ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order li {
+  margin: 4px 0;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.order {
+  animation: fadeIn 1s ease-in;
+}

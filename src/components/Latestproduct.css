@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+.shopping-cart-btn {
+	color: #000;
+	display: flex;
+}
+
+.product {
+	/* display: flex; */
+
+	justify-content: center;
+	cursor: pointer;
+	/* height: 550px; */
+
+	/* padding: 20px; */
+	margin: -1px;
+	 
+	background-color: #fff;
+	position: relative;
+	/* overflow: hidden; */
+	border-radius: 10px;
+}
+
+.main-title {
+	max-width: 71%;
+	display: block;
+	margin: 0 auto;
+}
+
+.title {
+	padding-left: 15px;
+	font-weight: 600;
+	font-size: 25px;
+
+}
+
+.product-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	object-fit: contain;
+	background-color: #fff;
+	border-radius: 5% 0% 0%;
+}
+
+.product-name {
+	font-size: 18px;
+	margin: 5px;
+	text-align: left;
+}
+
+.rating {
+	display: flex;
+}
+
+.star {
+	width: 1.2rem;
+	height: 1.2rem;
+	position: relative;
+}
+
+.starEmpty,
+.starFull {
+	font-size: 1.2rem;
+	position: absolute;
+	overflow: hidden;
+	color: #ffc1077a;
+}
+
+.product-price {
+	/* display: block; */
+	margin: 0px;
+	font-weight: bold;
+	font-size: 18px;
+	color: #000;
+	text-align: left;
+	padding-left: 6px;
+}
+
+.delete {
+	padding-left: 20px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.btn {
+
+	background: green!important;
+	color: #fff!important;
+	margin: 15px 110px 15px 0px!important;
+
+	outline: none;
+	/* background: #ccc; */
+	cursor: pointer;
+}
+
+.wishlist-icon {
+	cursor: pointer;
+	font-size: 1.5rem;
+	position: absolute;
+	top: 5px;
+	right: 18px;
+}
+
+.padd {
+	padding: 20px 5px 3px 5px;
+}
+
+.product-image-wrapper {
+
+	border: 1px solid #dfdfdf;
+	margin-right: 10px;
+	border-radius: 10px;
+
+}
+
+@media(max-width:1366px) {
+	.btn {
+		margin: 15px 10px 15px 0px!important;
+	}
+}
+@media (max-width: 1024px) {
+	.title {
+	  font-size: 22px;
+	}
+  }
+  
+  @media (max-width: 768px) {
+	.title {
+	  font-size: 20px;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.title {
+	  font-size: 18px;
+	}
+  
+	.product-image-wrapper {
+	  padding: 5px;
+	}
+  }

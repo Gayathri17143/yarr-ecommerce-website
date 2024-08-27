@@ -1,0 +1,42 @@
+/* Grid.css */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Adjust the number of columns as needed */
+
+}
+
+.grid-item {
+    
+    margin: 1%;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.grid-item img:hover {
+    transform: scale(1.02);
+}
+
+
+
+@media (max-width:991px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (max-width:768px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+
+}

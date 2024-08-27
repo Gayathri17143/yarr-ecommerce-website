@@ -1,0 +1,51 @@
+.offer {
+
+    display: block;
+    margin: 60px auto;
+    width: 70%;
+}
+
+.main {
+    background: #383838;
+    margin: 22px 18px 10px 0px!important;
+    padding: 20px;
+
+}
+
+.dis-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head {
+    font-size: 27px;
+    text-align: left;
+    color: #fff;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.par {
+    text-align: left;
+    color: #fff;
+
+    margin-bottom: 0%;
+}
+
+.paragraph {
+    text-align: left;
+    display: flex;
+    color: #fff;
+
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.pad {
+    padding-top: 30px;
+}
+
+ 
