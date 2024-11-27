@@ -10,16 +10,24 @@
 
   margin: 2%;
 }
-
+.title{
+   font-size:17px!important;
+   font-weight: 600!important;
+   cursor: pointer;
+   padding: 20px;
+}
+.title:hover{
+   
+  color: #f7941e;
+ 
+}
 .grid-item img {
   width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
-.grid-item img:hover {
-  transform: scale(1.02);
-}
+ 
 
 
 @media (max-width:991px) {

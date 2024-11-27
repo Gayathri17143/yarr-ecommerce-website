@@ -1,11 +1,18 @@
-import { useEffect, useState ,useContext} from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa"; 
-import { Button } from "@mui/material";
-import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import { useEffect, useState, useContext } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 import { Star, StarBorder, StarHalf } from "@mui/icons-material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import "./Latestproduct.css"
+
+import "./Latestproduct.css";
 import { CartContext } from "../components/CartContext";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  IconButton,
+} from "@mui/material";
 
 const ProductCard = ({ product, onToggleWishlist }) => {
   const { addToCart } = useContext(CartContext);
@@ -27,7 +34,7 @@ const ProductCard = ({ product, onToggleWishlist }) => {
     setProducts([...productsInCart, newProduct]);
     window.location.reload();
   };
-  const {   rating  } = product;
+  const { rating } = product;
 
   const renderRating = (rating) => {
     const fullStars = Math.floor(rating);
@@ -36,6 +43,10 @@ const ProductCard = ({ product, onToggleWishlist }) => {
 
     return (
       <>
+        {/* Display numeric rating after stars */}
+        <span style={{ marginRight: "8px", fontWeight: "bold" }}>
+          {rating.toFixed(1)}
+        </span>
         {Array(fullStars)
           .fill()
           .map((_, index) => (
@@ -52,43 +63,59 @@ const ProductCard = ({ product, onToggleWishlist }) => {
   };
 
   return (
-    <div className="product">
-      <div
-        className="product-image-wrapper"
-       
-      >
-        <img className="product-image" src={product.img} alt={product.title}   />
-        
-        <div className="padd">
-          <h6 className="product-name">{product.title}</h6>
-
-          <p style={{ textAlign: "left" }}>{renderRating(rating)}</p>
-
-          <p className="product-price">
-              ₹
-              {Math.round(
-                product.Price - (product.Price * product.discount) / 100
-              )}
-              <del className="delete">MRP₹{product.Price}</del>
-            </p>
-
-          <Button
-            href="/product"
-           className="btn"
+    <Card sx={{ maxWidth: 345, position: "relative", padding: "10px" }}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={product.img}
+        alt={product.title}
+        className="product-image"
+      />
+      <CardContent>
+        <Typography variant="h6" className="product-name" gutterBottom>
+          {product.title}
+        </Typography>
+        <Typography
+          sx={{ color: "#f7941e", fontSize: "27px", textAlign: "left" }}
+        >
+          ₹
+          {Math.round(product.Price - (product.Price * product.discount) / 100)}
+          <br />
+          <span
+            style={{
+              textDecoration: "line-through",
+              fontSize: "15px",
+              color: "#000",
+            }}
           >
-            <ShoppingBagIcon /> Shop Now
-          </Button>
-          <ShoppingCartIcon
-              sx={{ marginTop: "10px" }}
-              onClick={() => addProductToCart(product)}
-            />
-        </div>
-
-        <div className="wishlist-icon" onClick={handleToggleWishlist}>
-          {product.inWishlist ? <FaHeart color="red" /> : <FaRegHeart />}
-        </div>
-      </div>
-    </div>
+            MRP ₹{product.Price}
+          </span>
+        </Typography>
+        <Typography
+          style={{ textAlign: "left", display: "flex", alignItems: "center" }}
+        >
+          {renderRating(product.rating)}
+        </Typography>
+        <Button
+          href="/product"
+          sx={{
+            mt: 2,
+            color: "#f7941e",
+            border: "1px solid #ccc",
+            width: "100%",
+            fontWeight: "600",
+          }}
+        >
+          BUY NOW
+        </Button>
+      </CardContent>
+      <IconButton
+        sx={{ position: "absolute", top: 10, right: 10 }}
+        onClick={handleToggleWishlist}
+      >
+        {product.inWishlist ? <FaHeart color="red" /> : <FaRegHeart />}
+      </IconButton>
+    </Card>
   );
 };
 

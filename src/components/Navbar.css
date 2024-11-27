@@ -1,8 +1,19 @@
  .logo {
     background-color: #171717;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .log{
-   width: 7%;
+   width: 100%;
    margin: 0 auto;
    display: block;
+ }
+ .clr{
+  color: #171717!important;
+
+ }
+ .clr:hover {
+  color: #ff7600!important;
+  background-color:none!important;
  }

@@ -45,7 +45,7 @@ const Component = () => {
     <Container>
       <div className=" "  >
         <div className="header" style={{borderBottom:"1px solid #ccc"}}>
-          <h4>My Wishlist</h4>
+          <h2>My Wishlist</h2>
         </div>
         <div className="cart-products">
           {wishlist && wishlist.length === 0 && (

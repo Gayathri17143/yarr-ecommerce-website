@@ -1,31 +1,43 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Banner1 from "../assets/yarr-coming-soon.webp";
-import Banner2 from "../assets/Yarr-Fan-40-per-web.webp";
-import Banner3 from "../assets/grinder-banner-web.webp";
-import "./Bannercarousel.css";
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Banner1 from "../assets/Yarr/header-banner/web/Coming-Soon.jpg";
+import Banner2 from "../assets/Yarr/header-banner/web/Kitchen-banner.png";
+import MobileBanner1 from "../assets/Yarr/header-banner/mobile/Authentic-cooking.jpg";
+import MobileBanner2 from "../assets/Yarr/header-banner/mobile/kitchen-fan.jpg";
+import { useMediaQuery } from "@mui/material";
+// import "./Bannercarousel.css";
+
 const CarouselComponent = () => {
+  // Use Material-UI's useMediaQuery to detect screen size
+  const isMobile = useMediaQuery('(max-width:768px)');
+
   return (
-    <Carousel  showArrows={true}
-    showThumbs={false}
-    showStatus={false}
-    infiniteLoop={true}
-    autoPlay={true}
-    interval={3000}>
-      <div>
-        <img src={Banner1} alt="Slide 1" />
-        
-      </div>
-      <div>
-        <img src={Banner2} alt="Slide 2" />
-         
-      </div>
-      <div>
-        <img src={Banner3} alt="Slide 3" />
-        
-      </div>
-    </Carousel>
+    <div className="carousel-container">
+      <Carousel
+        showArrows={false}
+        showThumbs={false}
+        showStatus={false}
+        infiniteLoop={true}
+        autoPlay={true}
+        interval={3000}
+      >
+        <div className="carousel-slide">
+          <img
+            src={isMobile ? MobileBanner1 : Banner1}
+            alt="Kitchen"
+            className="carousel-image" width={'100%'}
+          />
+        </div>
+        <div className="carousel-slide">
+          <img
+            src={isMobile ? MobileBanner2 : Banner2}
+            alt="Kitchen"
+            className="carousel-image"  width={'100%'}
+          />
+        </div>
+      </Carousel>
+    </div>
   );
 };
 

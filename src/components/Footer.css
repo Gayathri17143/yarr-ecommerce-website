@@ -8,32 +8,80 @@
 ul li {
   margin: 20px;
 }
-.text1{
-   text-align: left;
-    padding: 0 15%; 
-}
-.text2{
-   padding: 3% 15%;
-}
-.text3{
-   display: flex; 
-   color: #fff;
-   padding: 0 15%;
+
+.text1 {
+  text-align: left;
+  padding: 0 15%; /* Adjust the default padding */
 }
 
+.text2 {
+  padding: 1% 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
-@media(max-width:1280px){
-  .text1{
+.text3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 0% 5%;
+}
+
+/* Tablet View */
+@media (max-width: 1280px) {
+  .text1 {
+    padding: 0 10%; /* Reduce padding for smaller screens */
+  }
+}
+
+/* Mobile View */
+@media (max-width: 991px) {
+  .para {
+    font-size: 14px; /* Reduce font size for mobile */
+  }
   
-    padding: 0 10%; 
- }
-}
-@media(max-width:991px){
-.para{
-  font-size: 14px;
-}
-.text1{
+  .text1 {
+    padding: 0 5%; /* Reduce padding for mobile */
+  }
   
-   padding: 0 5%; 
+  .text2 {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align text to the left */
+    padding: 2% 5%; /* Adjust padding for better spacing */
+  }
+  
+  .text3 {
+    flex-direction: column; /* Stack text and elements */
+    padding: 5% 5%; /* Add more padding for mobile */
+    text-align: center;
+  }
+
+  ul li {
+    margin: 10px; /* Reduce margin for smaller screens */
+  }
 }
+
+/* Smaller Mobile Screens */
+@media (max-width: 600px) {
+  .para {
+    font-size: 12px; /* Further reduce font size for smaller mobile screens */
+  }
+  
+  .text1 {
+    padding: 0 3%; /* Further reduce padding */
+  }
+  
+  .text2 {
+    padding: 2% 3%; /* More compact padding for smaller screens */
+  }
+  
+  .text3 {
+    padding: 3% 3%; /* Adjust padding */
+  }
+  
+  ul li {
+    margin: 5px; /* Further reduce margin */
+  }
 }

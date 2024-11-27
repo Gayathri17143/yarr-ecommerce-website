@@ -1,65 +1,180 @@
 import React from "react";
-
-import "./Footer.css";
-import { Container, TextField, Button } from "@mui/material";
+import InputBase from "@mui/material/InputBase";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import { styled } from "@mui/material/styles";
+import FormControl from "@mui/material/FormControl";
+import { Button, Typography } from "@mui/material";
 import logo from "../assets/yarr-logo.webp";
+
 const Footer = () => {
+  const BootstrapInput = styled(InputBase)(({ theme }) => ({
+    "label + &": {
+      marginTop: theme.spacing(3),
+    },
+    "& .MuiInputBase-input": {
+      borderRadius: 4,
+      position: "relative",
+      backgroundColor: "#fff",
+      border: "1px solid",
+      fontSize: 16,
+      width: "100%",
+      padding: "10px 12px",
+      transition: theme.transitions.create([
+        "border-color",
+        "background-color",
+        "box-shadow",
+      ]),
+    },
+  }));
+
   return (
-    <>
-      {/* <Container> */}
+    <div
+      style={{
+        background: "#171717",
+        padding: "30px",
+        color: "#fff",
+        fontSize: "16px",
+        // position: "sticky",
+        // bottom: 0,
+        // zIndex: 1000,
+        paddingTop: "20px",
+      }}
+    >
+      <div>
+        <img src={logo} alt="logo" style={{ marginLeft: "12%" }} />
+      </div>
 
-      <div style={{ background: "#171717" }}>
-        <div className="text1 ">
-          <img src={logo} alt="logo" style={{ marginTop: "20px" }}></img>
-          <div className="para ">
-            YAAR is a new line of kitchen essentials designed to elevate your
-            everyday cooking experience. We understand the heart of an indian
-            kitchen - it's about creating delicious meals filled with tradition
-            and love.But we also know that modern life demands a balance between
-            heritage and convenience,Our throughtfully designed, high-quality
-            products are made for the busy home cook who appreciates both
-            functionality and aesthetics. We use age-old techniques alongside
-            innovative materials to create tools that are beautiful,durable,and
-            built for the real mess of everyday cooking.
-          </div>
-        </div>
-        <div className="text2 " >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexWrap: "wrap",
+          gap: "20px",
+          textAlign: "center",
+          "@media (max-width: 600px)": {
+            flexDirection: "column",
+            gap: "10px",
+          },
+        }}
+      >
+        <Box>
           <ul
-            className=" "
-            style={{ display: "inline-flex", listStyle: "none", color: "#fff" }}
+            style={{
+              display: "flex",
+              gap: { sx: "5px", md: "15px" },
+              listStyle: "none",
+              padding: 0,
+              flexWrap: "wrap",
+              justifyContent: { sx: "start", sm: "center" },
+            
+            }}
           >
-            <li>Shipping</li>
-            <li>Returns</li>
-            <li>Privacy Policy</li>
-            <li>Terms and Conditions</li>
-            <li>About</li>
-            <li>FAQ</li>
+            <li
+              style={{ margin: "20px", listStyle: "none", textAlign: "left"  }}
+            >
+              Home
+            </li>
+            <li
+              style={{ margin: "20px", listStyle: "none", textAlign: "left" }}
+            >
+              Blog
+            </li>
+            <li
+              style={{ margin: "20px", listStyle: "none", textAlign: "left" }}
+            >
+              Privacy Policy
+            </li>
+            <li
+              style={{ margin: "20px", listStyle: "none", textAlign: "left" }}
+            >
+              Terms and Conditions
+            </li>
+            <li
+              style={{ margin: "20px", listStyle: "none", textAlign: "left" }}
+            >
+              About
+            </li>
           </ul>
+        </Box>
 
-          <TextField
-            label="Enter your email"
-            sx={{ background: "#fff", borderRadius: "10px", margin: "20px" }}
-          />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            "@media (max-width: 600px)": {
+              gap: "10px",
+              display: "contents",
+            },
+          }}
+        >
+          <FormControl variant="standard">
+            <InputLabel
+              shrink
+              htmlFor="bootstrap-input"
+              sx={{ color: "#fff!important" }}
+            >
+              Stay up to date
+            </InputLabel>
+            <BootstrapInput
+              id="bootstrap-input"
+              placeholder="Enter your email"
+            />
+          </FormControl>
+
           <Button
-            variant="contained"
-            style={{ color: "#fff", background: "#ff5e00" }}
+            sx={{
+              margin: "25px 0px 0px 10px",
+              background: "#f7941e",
+              borderRadius: "5px",
+              fontWeight: "600",
+              color: "#fff",
+              textTransform: "none",
+              padding: "10px 20px",
+              "@media (max-width: 600px)": {
+                margin: "15px 0 0 0",
+              },
+            }}
           >
             Subscribe
           </Button>
-        </div>
-        <div className="text3 " >
-          <p className=" " style={{marginRight:"50%"}}>
-            © 2024 TechConnect Theme. All Rights Reserved.
-          </p>
-          
-            <p className=" " style={{margin:"20px"}}>Instagram</p>
-            <p className=" " style={{margin:"20px"}}>Facebook</p>
-          
-        </div>
-       
-      </div>
-      {/* </Container> */}
-    </>
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "20px",
+          textAlign: "center",
+          marginTop: "20px",
+          "@media (max-width: 600px)": {
+            gap: "10px",
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            marginRight: { sm: "10%", md: "20%" },
+          }}
+        >
+          © 2024 TechConnect Theme. All Rights Reserved.
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            gap: { xs: "40px", sm: "15px" },
+            justifyContent: { xs: "start", sm: "center" },
+          }}
+        >
+          <Typography>Instagram</Typography>
+          <Typography>Facebook</Typography>
+        </Box>
+      </Box>
+    </div>
   );
 };
 

@@ -7,9 +7,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Container, Link, Typography } from "@mui/material";
+import { Container, Link, Typography, Box } from "@mui/material";
 import { FaStar } from "react-icons/fa";
 import fan from "../assets/fan.png";
+import { Description } from "@mui/icons-material";
 
 const product = {
   id: 1,
@@ -29,11 +30,11 @@ const product = {
   rating: 4.2,
   reviews: 6,
   quantity: 1,
-  discountedPrice: 1999,
-  discount: "43% OFF",
-
+  discountedPrice: 2999,
+  // discount: "43% OFF",
+  main_title: "Description",
   description_title:
-    "Keep your Kitchen Cool And Comforatable With Our High Speen Kitchen Portable Tower Fan!",
+    "Keep your Kitchen Cool And Comforatable With Our High Speed Kitchen Portable Tower Fan!",
   // colors: [
   //   { id: 1, name: "black", color: "black", url: "/Details/id" },
   //   { id: 2, name: "blue", color: "blue", url: "/Details/id" },
@@ -149,9 +150,17 @@ const Details = () => {
   const [width, setWidth] = useState(0);
   const [start, setStart] = useState(0);
   const [change, setChange] = useState(9);
-
+  const [selectedColor, setSelectedColor] = useState("Select Color");
   const slideRef = useRef();
+  const [quantity, setQuantity] = useState(1);
 
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
   useEffect(() => {
     if (!slideRef.current) return;
     const scrollWidth = slideRef.current.scrollWidth;
@@ -217,10 +226,14 @@ const Details = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleColorSelect = (color) => {
+    setSelectedColor(color);
+    handleClose();
+  };
   return (
     <React.Fragment>
       <Container>
-        <section className="product-details">
+        <section className="product-detail">
           <div className="product-page-img">
             <div className="big-images">
               {product.images.map((image, index) => (
@@ -272,17 +285,21 @@ const Details = () => {
                 textAlign: "left",
                 marginBottom: "0px",
                 fontSize: "13px",
+                fontWeight: "600",
+                opacity: "0.7",
               }}
             >
               {product.subtitle}
             </p>
-            <h3 style={{ textAlign: "left", marginTop: "10px" }}>
+            <h3
+              style={{ textAlign: "left", marginTop: "10px", fontSize: "23px" }}
+            >
               {product.title}
             </h3>
             <p className="product-pri">
               <del>₹{product.Price}</del>₹
               {Math.round(product.Price - product.discountedPrice / 100)}
-              <button className="dis"> {product.discount}</button>
+              {/* <button className="dis"> {product.discount}</button> */}
             </p>
             <p style={{ textAlign: "left" }}>
               {product.emi}{" "}
@@ -310,47 +327,62 @@ const Details = () => {
               <p className="small-desc">{product.desc}</p>
             </div>
 
-            <div className=" ">
-              <p style={{ color: "#000", textAlign: "left" }}>COLOR</p>
+            <div>
+              <Typography
+                variant="body1"
+                sx={{ color: "#000", textAlign: "left", mb: 1 }}
+              >
+                COLOR
+              </Typography>
               <Button
-                id="demo-customized-button"
-                aria-controls={open ? "demo-customized-menu" : undefined}
+                id="color-select-button"
+                aria-controls={open ? "color-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
-                sx={{ border: "1px solid #ccc", color: "#000", width: "100%" }}
+                sx={{
+                  border: "1px solid #ccc",
+                  color: "#000",
+                  width: "100%",
+                  justifyContent: "space-between",
+                }}
                 disableElevation
                 onClick={handleClick}
-                endIcon={
-                  <KeyboardArrowDownIcon sx={{ marginLeft: " 400px" }} />
-                }
+                endIcon={<KeyboardArrowDownIcon sx={{ marginLeft: "auto" }} />}
               >
-                Select Color
+                {selectedColor}
               </Button>
-              <StyledMenu
-                id="demo-customized-menu"
-                MenuListProps={{
-                  "aria-labelledby": "demo-customized-button",
-                }}
+              <Menu
+                id="color-menu"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "color-select-button",
+                }}
               >
-                <MenuItem onClick={handleClose} disableRipple>
-                  Black
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                  White
-                </MenuItem>
-
-                <MenuItem onClick={handleClose} disableRipple>
-                  Blue
-                </MenuItem>
-                <MenuItem onClick={handleClose} disableRipple>
-                  Grey
-                </MenuItem>
-              </StyledMenu>
+                {["Black", "White", "Blue", "Grey"].map((color) => (
+                  <MenuItem
+                    key={color}
+                    onClick={() => handleColorSelect(color)}
+                  >
+                    {color}
+                  </MenuItem>
+                ))}
+              </Menu>
             </div>
-
+            <Box display="flex" alignItems="center" gap={2} sx={{ mt: 2 }}>
+              <Button
+                variant="outlined"
+                onClick={handleDecrement}
+                disabled={quantity === 1} // Optional: disable button if quantity is 1
+              >
+                -
+              </Button>
+              <Typography variant="body1">{quantity}</Typography>
+              <Button variant="outlined" onClick={handleIncrement}>
+                +
+              </Button>
+            </Box>
             <div className="cart-btns">
               <a href="/ " className="  buy-now">
                 Shop Now
@@ -359,16 +391,17 @@ const Details = () => {
           </div>
         </section>
         <div>
-          <h3 className="des-title">{product.description_title}</h3>
+          <h3 className="center-head">{product.main_title}</h3>
+          <h5 className="desc-title">{product.description_title}</h5>
         </div>
         <section className="product-features">
           {product.features.map((feature, index) => (
             <div
               key={index}
               style={{
-                border: "1px solid #ccc",
+                // border: "1px solid #ccc",
                 padding: "20px",
-                margin: "20px",
+                // margin: "20px",
               }}
             >
               <Typography variant="h6" sx={{ fontWeight: "600" }}>

@@ -1,52 +1,97 @@
 import React from "react";
-import "./ImageGrid.css";
-import Image1 from "../assets/deep-kadai.png";
-import Image2 from "../assets/roti-tawa.png";
-import Image3 from "../assets/grill-pan.png";
-import Image4 from "../assets/paniyarakal.png";
-import Image5 from "../assets/dosa-tawa.png";
-import Image6 from "../assets/kitchen-fan.png";
-import Image7 from "../assets/blender.png";
-import Image8 from "../assets/pepper.png";
-import Image9 from "../assets/services.png";
+import { Grid, Typography, Box,Container } from "@mui/material";
+import Image1 from "../assets/Yarr/categories/mist-fan.png";
+import Image2 from "../assets/Yarr/categories/power-bank.png";
+import Image3 from "../assets/Yarr/categories/kitchen-fan.png";
+import Image4 from "../assets/Yarr/categories/pepper-and-salt-mill.png";
+import Image5 from "../assets/Yarr/categories/wireless-earbuds.png";
+import Image6 from "../assets/Yarr/categories/car-charger.png";
+import Image7 from "../assets/Yarr/categories/blender.png";
+import Image8 from "../assets/Yarr/categories/rati-tawa.png";
+import Image9 from "../assets/Yarr/categories/deep-kadai.png";
+import Image10 from "../assets/Yarr/categories/grill-pan.png";
+import Image11 from "../assets/Yarr/categories/dasa-tawa.png";
+import Image12 from "../assets/Yarr/categories/paniyarakal.png";
+// import "./ImageGrid.css"
+const images = [
+  { src: Image1, title: "KITCHEN FAN" },
+  { src: Image2, title: "POWER BANK" },
+  { src: Image3, title: "KITCHEN FAN" },
+  { src: Image4, title: "PEPPER & SALT MILL" },
+  { src: Image5, title: "WIRELESS EARBUDS" },
+  { src: Image6, title: "CAR CHARGER" },
+  { src: Image7, title: "BLENDER" },
+  { src: Image8, title: "ROTI TAWA" },
+  { src: Image9, title: "DEEP KADAI" },
+  { src: Image10, title: "GRILL PAN" },
+  { src: Image11, title: "DASA TAWA" },
+  { src: Image12, title: "PANIYARAKAL" },
+];
 
 const ImageGrid = () => {
   return (
-    <>
-      <div style={{ display: "block", margin: "0 auto", width: "70%" }}>
-        <h2 style={{ fontWeight: "500" }}>SHOP BY PRODUCTS</h2>
-        <div className="grid-con">
-          <div className="grid-item">
-            <img src={Image1} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image2} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image3} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image4} alt="text" />
-          </div>
+    <Container>
+      <Box sx={{ marginTop: "5%" }}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{
+            margin: "2% auto",
+            fontSize: { xs: "20px", sm: "24px", md: "27px" },
+            fontWeight: "600",
+            textAlign: "center",
+            paddingBottom:"30px"
+          }}
+        >
+          Explore Our Collections
+        </Typography>
 
-          <div className="grid-item">
-            <img src={Image5} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image6} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image7} alt="text" />
-          </div>
-          <div className="grid-item">
-            <img src={Image8} alt="text" />
-          </div>
-        </div>
-      </div>
-      <div>
-        <img src={Image9} alt="text" width="100%" />
-      </div>
-    </>
+        {/* Flexbox layout for the images */}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap", // Enable wrapping of items
+            justifyContent: "center",
+            gap: { xs: "20px", sm: "30px", md: "40px" }, // Adjust gap based on screen size
+            marginBottom: "40px",
+          }}
+        >
+          {images.map((item, index) => (
+            <Box
+              key={index}
+              sx={{
+                width: { xs: "25%", sm: "20%", md: "10%" }, // 2 items in mobile, 3 in tablet, 6 in desktop
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={item.src}
+                alt={item.title}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "5px",
+                  objectFit: "cover",
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: { xs: "14px", sm: "15px", md: "14px" },
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  padding: "10px 0",
+                  "&:hover": {
+                    color: "#f7941e",
+                  },
+                }}
+              >
+                {item.title}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

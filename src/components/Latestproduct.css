@@ -26,6 +26,7 @@
 	display: block;
 	margin: 0 auto;
 }
+ 
 
 .title {
 	padding-left: 15px;
@@ -79,7 +80,7 @@
 }
 
 .delete {
-	padding-left: 20px;
+	/* padding-left: 20px; */
 	font-size: 14px;
 	font-weight: 500;
 }

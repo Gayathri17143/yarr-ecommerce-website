@@ -10,14 +10,6 @@ const Shopcart = () => {
     localStorage.setItem("shopping-cart", JSON.stringify(productsInCart));
   }, [productsInCart]);
 
-  const addProductToCart = (product) => {
-    const newProduct = {
-      ...product,
-      count: 1,
-    };
-    setProducts([...productsInCart, newProduct]);
-    window.location.reload();
-  };
 
   const onQuantityChange = (productId, count) => {
     setProducts((oldState) => {
