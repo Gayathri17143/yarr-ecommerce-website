@@ -66,7 +66,7 @@ const ImageGrid = () => {
                   fontWeight: "600",
                   color: "#fff",
                   textTransform: "none",
-                  marginRight: { xs: "50px", sm: "100px" ,md:"150px"},
+                  marginRight: { xs: "50px", sm: "100px" ,md:"220px"},
                   width: { xs: "100%", sm: "auto" },
                 }}
               >
