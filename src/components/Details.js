@@ -10,7 +10,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Container, Link, Typography, Box } from "@mui/material";
 import { FaStar } from "react-icons/fa";
 import fan from "../assets/fan.png";
-import { Description } from "@mui/icons-material";
+ 
 
 const product = {
   id: 1,

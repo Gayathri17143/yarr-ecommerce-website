@@ -69,7 +69,7 @@ const Products4 = () => {
       return wishlistItem ? { ...product, inWishlist: true } : product;
     });
     setProducts4(updatedProducts);
-  }, [products4]);
+  }, []);
   return (
     <div>
       <Grid container spacing={3}>

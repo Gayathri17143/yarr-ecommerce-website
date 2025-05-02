@@ -67,7 +67,7 @@ const Products2 = () => {
           return wishlistItem ? { ...product, inWishlist: true } : product;
         });
         setProducts2(updatedProducts);
-      }, [products2]);
+      }, []);
   return (
     <div>
       <Grid container spacing={3}>

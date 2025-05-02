@@ -47,7 +47,7 @@ const isInWishlist = wishlist.some((item) => item.id === product.id);
 
   return (
     <>
-      <Card sx={{ maxWidth: 345, position: "relative", padding: "10px" }}>
+      <Card sx={{ maxWidth: { sm: "500", md: "345" }, position: "relative", padding: "10px" }}>
       <Link to={`/product/${product.id}`}>
           <CardMedia
             component="img"
